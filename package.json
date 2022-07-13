@@ -1,0 +1,23 @@
+{
+  "name": "cypresssaucedemocom-ts",
+  "version": "1.0.0",
+  "description": "The cypress end-to-end tests for the saucedemo.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OlehBabenkoo/cypresssaucedemocom-ts.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OlehBabenkoo/cypresssaucedemocom-ts/issues"
+  },
+  "homepage": "https://github.com/OlehBabenkoo/cypresssaucedemocom-ts#readme",
+  "devDependencies": {
+    "cypress": "^10.3.0",
+    "typescript": "4.7.4"
+  }
+}

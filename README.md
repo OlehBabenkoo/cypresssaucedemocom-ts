@@ -1,2 +1,2 @@
-# cypresssaucedemocom-ts
-Automation training project (TypeScript, Cypress, Mochawesome reporter,ESLint, CI/CD GitHub,Page Object Pattern))
+# Cypress test automation framework
+The cypress end-to-end tests for the saucedemo.com

@@ -1,7 +1,7 @@
-import { BasePage } from "../base/basePage";
+import BasePage from "../base/BasePage";
 
-export class LoginPage extends BasePage {
+export default class LoginPage extends BasePage {
   constructor() {
-    super({ page_name: 'LoginPage', page_url: 'https://www.saucedemo.com/' });
+    super('LogIn Page')
   }
-}
+};

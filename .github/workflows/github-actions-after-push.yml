@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          ref: develop
+          ref: develop-ts
       - name: Install node
         uses: actions/setup-node@v2
         with:

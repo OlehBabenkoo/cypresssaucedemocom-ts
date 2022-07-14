@@ -1,4 +1,4 @@
-export default abstract class BasePage {
+export default abstract class BasePage{
   readonly PAGE_NAME: string;
   readonly PAGE_URL: string;
 

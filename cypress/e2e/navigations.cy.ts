@@ -1,4 +1,4 @@
-import LoginPage from "../page-object/pages/loginPage";
+import LoginPage from "../page-object/pages/LoginPage";
 const loginPage = new LoginPage();
 
 describe('Navigations test', () => {

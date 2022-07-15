@@ -5,6 +5,9 @@ describe('Navigations test', () => {
   it('Open SWAGLABS Login site', () => {
     loginPage
     .visit()
-    .checkPageUrl();
+    .checkPageUrl()
+    .enterEmail()
+    .enterPassword()
+    .clickOnSumbitButton();
   });
 });

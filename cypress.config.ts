@@ -16,4 +16,4 @@ export default defineConfig({
     baseUrl: "https://www.saucedemo.com/",
     chromeWebSecurity: false
   }
-})
+});

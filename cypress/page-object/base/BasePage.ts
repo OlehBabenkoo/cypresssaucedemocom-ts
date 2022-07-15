@@ -7,12 +7,12 @@ export default abstract class BasePage{
       this.PAGE_URL = pageUrl;
     }
   
-    visit(): this {
+    public visit(): this {
       cy.visit(`${Cypress.config("baseUrl")}${this.PAGE_URL}`);
       return this;
     }
   
-    checkPageUrl(): this {
+   public checkPageUrl(): this {
       cy.location("href").
       should("include",`${Cypress.config("baseUrl")}${this.PAGE_URL}`);
       return this;

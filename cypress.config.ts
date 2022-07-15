@@ -16,11 +16,24 @@ export default defineConfig({
     baseUrl:'https://www.saucedemo.com/',
     chromeWebSecurity: false,
     env:{
-      password:'secret_sauce',
-      standartUser: 'standard_user',
-      lockedUser: 'locked_out_user',
-      problemUser: 'problem_user',
-      performanceUser: 'performance_glitch_user'
+     accounts:{
+      standart:{
+        userName:'standart_user',
+        password:'secret_sause'
+      },
+      locked:{
+        userName:'locked_out_user',
+        password:'secret_sause'
+      },
+      problem:{
+        userName:'problem_user',
+        password:'secret_sause'
+      },
+      performance:{
+        userName:'performance_glitch_user',
+        password:'secret_sause'
+      },
+     }
     }
   },
 });

@@ -1,4 +1,5 @@
 import BasePage from '../base/BasePage';
+import InventoryPage from './InventoryPage';
 
 export default class LoginPage extends BasePage {
   public EMAIL: string = 'input[type=text';
@@ -8,26 +9,32 @@ export default class LoginPage extends BasePage {
     super('LogIn Page');
   }
 
-  get inputEmail(): Cypress.Chainable {
-    return cy.get(this.EMAIL).clear();
+  private get inputEmail(): Cypress.Chainable {
+    return cy.get(this.EMAIL);
   }
-  get inputPassword(): Cypress.Chainable {
-    return cy.get(this.PASSWORD).clear();
+  private get inputPassword(): Cypress.Chainable {
+    return cy.get(this.PASSWORD);
   }
-  get clickOnButton(): Cypress.Chainable {
+  private get clickOnButton(): Cypress.Chainable {
     return cy.get(this.SUBMIT);
   }
 
-  public enterEmail():this{
-   this.inputEmail.type(Cypress.env('standartUser'));
+  private enterEmail(userName:string):this{
+   this.inputEmail.clear();
     return this;
   }
-  public enterPassword():this{
-   this.inputPassword.type(Cypress.env('password'));
+  private enterPassword(userPassword:string):this{
+   this.inputPassword.clear();
     return this;
   }
-  public  clickOnSumbitButton():this{
+ private  clickOnSumbitButton():this{
    this.clickOnButton.click();
     return this;
   }
-};
+  logInWithCredantials(userName:string,userPassword:string):void{
+    this.enterEmail(userName);
+    this.enterPassword(userPassword);
+    this.clickOnSumbitButton();
+    return new InventoryPage();
+  }
+}

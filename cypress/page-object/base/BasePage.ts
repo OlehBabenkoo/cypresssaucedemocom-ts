@@ -1,6 +1,6 @@
 export default abstract class BasePage{
-    readonly PAGE_NAME: string;
-    readonly PAGE_URL: string;
+    protected readonly PAGE_NAME: string;
+    protected readonly PAGE_URL: string;
 
     constructor(pageName: string, pageUrl: string = '') {
       this.PAGE_NAME = pageName;

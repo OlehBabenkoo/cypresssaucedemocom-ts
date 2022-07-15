@@ -1,16 +1,23 @@
-import InventoryPage from '../page-object/pages/InventoryPage';
 import LoginPage from '../page-object/pages/LoginPage';
+import {AccountType} from '../support/AccountType';
+import Credentials from '../support/Credentials';
+
 const loginPage = new LoginPage();
-const inventoryPage = new InventoryPage();
 
 describe('Navigations test', () => {
-  it('Login with standart user', () => {
-    const userName = Cypress.env('accounts')['standart']['userName'];
-    const userPassword = Cypress.env('accounts')['standart']['password'];
-    loginPage
-    .visit()
-    .checkPageUrl()
-    .logInWithCredantials(userName,userPassword);
-    inventoryPage.checkPageUrl();
-  });
+    it('Login with \'standard\' user', () => {
+        loginPage
+            .visit()
+            .checkPageUrl()
+            .logInWithCredantials(Credentials.getUserName(AccountType.Standard), Credentials.getUserPassword(AccountType.Standard))
+            .checkPageUrl();
+    });
+
+    it('Login with \'problem\' user', () => {
+        loginPage
+            .visit()
+            .checkPageUrl()
+            .logInWithCredantials(Credentials.getUserName(AccountType.Problem), Credentials.getUserPassword(AccountType.Problem))
+            .checkPageUrl();
+    });
 });

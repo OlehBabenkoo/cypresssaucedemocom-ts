@@ -1,10 +1,23 @@
 import LoginPage from '../page-object/pages/LoginPage';
+import {AccountType} from '../support/AccountType';
+import Credentials from '../support/Credentials';
+
 const loginPage = new LoginPage();
 
 describe('Navigations test', () => {
-  it('Open SWAGLABS Login site', () => {
-    loginPage
-    .visit()
-    .checkPageUrl();
-  });
+    it('Login with \'standard\' user', () => {
+        loginPage
+            .visit()
+            .checkPageUrl()
+            .logInWithCredantials(Credentials.getUserName(AccountType.Standard), Credentials.getUserPassword(AccountType.Standard))
+            .checkPageUrl();
+    });
+
+    it('Login with \'problem\' user', () => {
+        loginPage
+            .visit()
+            .checkPageUrl()
+            .logInWithCredantials(Credentials.getUserName(AccountType.Problem), Credentials.getUserPassword(AccountType.Problem))
+            .checkPageUrl();
+    });
 });

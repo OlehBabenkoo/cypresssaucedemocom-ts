@@ -22,7 +22,7 @@ describe('Navigations test', () => {
     });
 
     it('Login with \'standard\' user with set cookies', () => {
-        cy.logInWithSettedCookies();
+        cy.logInWithSettedCookies(Credentials.getUserName(AccountType.Standard), Credentials.getUserPassword(AccountType.Standard));
         inventoryPage
             .visit()
             .checkPageUrl();

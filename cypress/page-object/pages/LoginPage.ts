@@ -33,9 +33,10 @@ export default class LoginPage extends BasePage {
         this.logInButton.click();
     }
 
-    public logInWithCredantials(userName: string, userPassword: string): InventoryPage {
+    public logInWithCredentials(credentials: any): InventoryPage {
+        const {userName, password} = credentials;
         this.enterEmail(userName)
-            .enterPassword(userPassword)
+            .enterPassword(password)
             .clickOnLogInButton();
         return new InventoryPage();
     }

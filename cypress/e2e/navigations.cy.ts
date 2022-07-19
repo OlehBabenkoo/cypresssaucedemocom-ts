@@ -20,4 +20,11 @@ describe('Navigations test', () => {
             .logInWithCredantials(Credentials.getUserName(AccountType.Problem), Credentials.getUserPassword(AccountType.Problem))
             .checkPageUrl();
     });
+
+    it('Login with \'standard\' user with set cookies', () => {
+        cy.logInWithSettedCookies();
+        inventoryPage
+            .visit()
+            .checkPageUrl();
+    });
 });

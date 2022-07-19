@@ -1,8 +1,10 @@
 import LoginPage from '../page-object/pages/LoginPage';
 import {AccountType} from '../support/AccountType';
 import Credentials from '../support/Credentials';
+import InventoryPage from '../page-object/pages/InventoryPage';
 
 const loginPage = new LoginPage();
+const inventoryPage = new InventoryPage();
 
 describe('Navigations test', () => {
     it('Login with \'standard\' user', () => {

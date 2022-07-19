@@ -11,7 +11,7 @@ describe('Navigations test', () => {
         loginPage
             .visit()
             .checkPageUrl()
-            .logInWithCredantials(Credentials.getUserName(AccountType.Standard), Credentials.getUserPassword(AccountType.Standard))
+            .logInWithCredentials(Credentials.getUserCredentials(AccountType.Standard))
             .checkPageUrl();
     });
 
@@ -19,12 +19,12 @@ describe('Navigations test', () => {
         loginPage
             .visit()
             .checkPageUrl()
-            .logInWithCredantials(Credentials.getUserName(AccountType.Problem), Credentials.getUserPassword(AccountType.Problem))
+            .logInWithCredentials(Credentials.getUserCredentials(AccountType.Standard))
             .checkPageUrl();
     });
 
     it('Login with \'standard\' user with set cookies', () => {
-        cy.logInWithSettedCookies(Credentials.getUserName(AccountType.Standard), Credentials.getUserPassword(AccountType.Standard));
+        cy.logInWithoutUi(Credentials.getUserCredentials(AccountType.Standard));
         inventoryPage
             .visit()
             .checkPageUrl();

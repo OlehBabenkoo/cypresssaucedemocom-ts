@@ -33,7 +33,7 @@ export default defineConfig({
                     userName: 'performance_glitch_user',
                     password: 'secret_sauce'
                 },
-            }
+            },
         }
     },
 });

@@ -2,7 +2,7 @@ import LoginPage from '../page-object/pages/LoginPage';
 import {AccountType} from '../support/AccountType';
 import Credentials from '../support/Credentials';
 import InventoryPage from '../page-object/pages/InventoryPage';
-import {SortTypes} from '../support/SortTypes';
+
 
 const loginPage = new LoginPage();
 const inventoryPage = new InventoryPage();
@@ -31,12 +31,11 @@ describe('Navigations test', () => {
             .visit()
             .checkPageUrl();
     });
-
-    it.only('Checking the sorting of goods from the lowest price to the highest', () => {
-        cy.logInWithoutUi(Credentials.getUserCredentials(AccountType.Standard));
-        inventoryPage
+    it.only('Login with \'locked\' user', () => {
+        loginPage
             .visit()
             .checkPageUrl()
-            .header.sortedBy(SortTypes.PriceLowToHigh);
-        });
+            .logInWithCredentials(Credentials.getUserCredentials(AccountType.LocKed));
+            loginPage.errorMessage('Epic sadface: Sorry, this user has been locked out.');
+    });
 });

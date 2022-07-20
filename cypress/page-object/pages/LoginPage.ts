@@ -18,7 +18,9 @@ export default class LoginPage extends BasePage {
     private get logInButton(): Cypress.Chainable {
         return cy.get('[data-test="login-button"]');
     }
-
+    private get errorText():Cypress.Chainable{
+        return cy.get('.error-message-container');
+    }
     private enterEmail(userName: string): this {
         this.inputEmailField.clear().type(userName);
         return this;
@@ -31,6 +33,11 @@ export default class LoginPage extends BasePage {
 
     private clickOnLogInButton(): void {
         this.logInButton.click();
+    }
+
+    public errorMessage(text:string) : this{
+        this.errorText.contains(text);
+        return this;
     }
 
     public logInWithCredentials(credentials: any): InventoryPage {

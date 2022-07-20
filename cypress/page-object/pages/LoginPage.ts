@@ -38,7 +38,7 @@ export default class LoginPage extends BasePage {
     }
 
     public checkErrorMessage(text:string) : this{
-        this.errorText.should('be.visible');
+        this.errorText.should('have.text', text);
         return this;
     }
 

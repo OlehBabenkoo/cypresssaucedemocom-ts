@@ -34,8 +34,7 @@ describe('Login and Logout test', () => {
         loginPage
           .visit()
           .checkPageUrl()
-          .logInWithCredentials(
-            Credentials.getUserCredentials(AccountType.LocKed));
+          .logInWithCredentials(Credentials.getUserCredentials(AccountType.LocKed));
         loginPage.checkErrorMessage('Epic sadface: Sorry, this user has been locked out.');
     });
 });

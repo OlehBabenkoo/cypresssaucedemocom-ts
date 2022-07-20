@@ -1,6 +1,6 @@
-export enum DropSort{
-    NameAtoZ = 'Name (A to Z)',
-    NameZtoA = 'Name (Z to A)',
+export enum SortTypes {
+    NameAtoZ = 'az',
+    NameZtoA = 'za',
     PriceLowToHigh = 'Price (low to high)',
     PriceHighToLow = 'Price (high to low)'
 }

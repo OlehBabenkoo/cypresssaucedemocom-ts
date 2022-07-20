@@ -34,24 +34,6 @@ export default defineConfig({
                     password: 'secret_sauce'
                 },
             },
-            sort:{
-                NameAtoZ : {
-                    text:'Name (A to Z)'
-                },
-                NameZtoA : {
-                    text:'Name (Z to A)'
-                },
-                PriceLowToHigh : {
-                    text:'Price (low to high)'
-                },
-                PriceHighToLow : {
-                    text:'Price (high to low)'
-                }
-            },
-            price:{
-                lowPrice:'7.99',
-                highPrice:'49.99'
-            }
         }
     },
 });

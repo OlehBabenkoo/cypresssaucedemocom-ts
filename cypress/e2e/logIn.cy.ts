@@ -3,12 +3,10 @@ import {AccountType} from '../support/AccountType';
 import Credentials from '../support/Credentials';
 import InventoryPage from '../page-object/pages/InventoryPage';
 
-
 const loginPage = new LoginPage();
 const inventoryPage = new InventoryPage();
 
-
-describe('Navigations test', () => {
+describe('Login and Logout test', () => {
     it('Login with \'standard\' user', () => {
         loginPage
             .visit()
@@ -31,11 +29,13 @@ describe('Navigations test', () => {
             .visit()
             .checkPageUrl();
     });
-    it.only('Login with \'locked\' user', () => {
+
+    it('Login with \'locked\' user', () => {
         loginPage
-            .visit()
-            .checkPageUrl()
-            .logInWithCredentials(Credentials.getUserCredentials(AccountType.LocKed));
-            loginPage.errorMessage('Epic sadface: Sorry, this user has been locked out.');
+          .visit()
+          .checkPageUrl()
+          .logInWithCredentials(
+            Credentials.getUserCredentials(AccountType.LocKed));
+        loginPage.checkErrorMessage('Epic sadface: Sorry, this user has been locked out.');
     });
 });

@@ -5,8 +5,7 @@ export default class Header {
   private headerContainer: string = '#header_container';
 
   private get sortDropdown(): Cypress.Chainable {
-    return cy.get(
-      `${this.headerContainer} [data-test='product_sort_container']`
+    return cy.get(`${this.headerContainer} [data-test='product_sort_container']`
     );
   }
   private get headerTitle(): Cypress.Chainable {
@@ -16,8 +15,8 @@ export default class Header {
     this.sortDropdown.select(sortedTypes);
     return new InventoryPage();
   }
-  public inventoryTitle(): this {
-    this.headerTitle.should('have.text',Cypress.env('headerTitles')['inventoryPage']);
+  public checkInventoryTitle(): this {
+    this.headerTitle.should('have.text','Products');
     return this;
   }
 }

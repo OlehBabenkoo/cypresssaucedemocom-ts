@@ -13,4 +13,11 @@ describe('Navigations test', () => {
             .checkPageUrl()
             .header.sortedBy(SortTypes.PriceLowToHigh);
         });
+    it('Checking that there is a Product heading on the Inventory Page', () => {
+            cy.logInWithoutUi(Credentials.getUserCredentials(AccountType.Standard));
+            inventoryPage
+                .visit()
+                .checkPageUrl()
+                .header.inventoryTitle();
+            });
 });

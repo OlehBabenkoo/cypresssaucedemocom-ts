@@ -34,6 +34,9 @@ export default defineConfig({
                     password: 'secret_sauce'
                 },
             },
+            headerTitles:{
+                inventoryPage:'Products'
+            }
         }
     },
 });

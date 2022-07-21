@@ -1,5 +1,5 @@
 import InventoryPage from '../pages/InventoryPage';
-import {SortTypes} from '../../support/SortTypes';
+import { SortTypes } from '../../support/SortTypes';
 import CartPage from '../pages/CartPage';
 
 export default class Header {
@@ -20,15 +20,15 @@ export default class Header {
     return new InventoryPage();
   }
   public checkInventoryTitle(): this {
-    this.headerTitle.should('have.text','Products');
+    this.headerTitle.should('have.text', 'Products');
     return this;
   }
   public clickCartLink(): CartPage {
     this.cartImage.click();
-    return new CartPage;
+    return new CartPage();
   }
   public checkCartTitle(): this {
-    this.headerTitle.should('have.text','Your Cart');
+    this.headerTitle.should('have.text', 'Your Cart');
     return this;
   }
 }

@@ -34,11 +34,19 @@ describe('Navigations test', () => {
             .header.checkCartTitle();
     });
 
-    it.only('Check links in footer', () => {
+    it('Check links in footer', () => {
         cy.logInWithoutUi(Credentials.getUserCredentials(AccountType.Standard));
         inventoryPage
             .visit()
             .checkPageUrl()
             .footer.checkSocialFooterLinks();
+    });
+
+    it('Check text in foooter',()=>{
+        cy.logInWithoutUi(Credentials.getUserCredentials(AccountType.Standard));
+        inventoryPage
+            .visit()
+            .checkPageUrl()
+            .footer.checkTextInFooter('© 2022 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy');
     });
 });

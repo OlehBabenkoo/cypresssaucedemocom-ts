@@ -8,16 +8,16 @@ export default class Footer {
         return cy.get(this.footerContainerLocator).find('.footer_copy');
     }
 
-    public checkSocialFooterLinks(): void {
+    public checkSocialLinks(): void {
         this.socialLinkList.each((link) => {
             cy.request({ method: 'GET', url: link.attr('href'), failOnStatusCode: false }).then((response) => {
-                const expectedStatusCode = link.attr('href').includes('linkedin') ? 999 : 200;
-                expect(response.status).eq(expectedStatusCode);
+                link.attr('href').includes('linkedin') ? 999 : 200;
+                expect(response.status).eq(link.attr('href').includes('linkedin') ? 999 : 200);
             });
         });
     }
-    public checkTextInFooter(text: string): this {
-        this.copyTextInFooter.should('have.text', text).scrollIntoView();
+    public checkText(expectedText: string): this {
+        this.copyTextInFooter.scrollIntoView().should('have.text', expectedText);
         return this;
     }
 }

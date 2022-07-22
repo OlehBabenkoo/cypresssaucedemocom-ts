@@ -39,7 +39,7 @@ describe('Navigations test', () => {
         inventoryPage
             .visit()
             .checkPageUrl()
-            .footer.checkSocialFooterLinks();
+            .footer.checkSocialLinks();
     });
 
     it('Check text in foooter',()=>{
@@ -47,6 +47,6 @@ describe('Navigations test', () => {
         inventoryPage
             .visit()
             .checkPageUrl()
-            .footer.checkTextInFooter('© 2022 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy');
+            .footer.checkText('© 2022 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy');
     });
 });

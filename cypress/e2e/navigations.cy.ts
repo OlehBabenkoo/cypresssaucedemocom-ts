@@ -33,4 +33,11 @@ describe('Navigations test', () => {
             .checkButton('Checkout')
             .header.checkCartTitle();
     });
+    it.only('Check links in footer', () => {
+        cy.logInWithoutUi(Credentials.getUserCredentials(AccountType.Standard));
+        inventoryPage
+            .visit()
+            .checkPageUrl()
+            .footer.checkFooterLinks();
+    });
 });

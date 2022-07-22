@@ -33,4 +33,20 @@ describe('Navigations test', () => {
             .checkButton('Checkout')
             .header.checkCartTitle();
     });
+
+    it('Check links in footer', () => {
+        cy.logInWithoutUi(Credentials.getUserCredentials(AccountType.Standard));
+        inventoryPage
+            .visit()
+            .checkPageUrl()
+            .footer.checkSocialLinks();
+    });
+
+    it('Check text in footer',()=>{
+        cy.logInWithoutUi(Credentials.getUserCredentials(AccountType.Standard));
+        inventoryPage
+            .visit()
+            .checkPageUrl()
+            .footer.checkText('© 2022 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy');
+    });
 });

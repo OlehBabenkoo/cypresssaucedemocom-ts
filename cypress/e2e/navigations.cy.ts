@@ -11,7 +11,8 @@ describe('Navigations test', () => {
         inventoryPage
             .visit()
             .checkPageUrl()
-            .header.sortedBy(SortTypes.PriceLowToHigh);
+            .header.sortedBy(SortTypes.PriceLowToHigh)
+            .checkGoodsIsSortedByLowToHi();
     });
 
     it('Checking that there is a Product heading on the Inventory Page', () => {
@@ -42,7 +43,7 @@ describe('Navigations test', () => {
             .footer.checkSocialLinks();
     });
 
-    it('Check text in footer',()=>{
+    it('Check text in foooter',()=>{
         cy.logInWithoutUi(Credentials.getUserCredentials(AccountType.Standard));
         inventoryPage
             .visit()

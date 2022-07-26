@@ -1,17 +1,13 @@
 import BasePage from '../base/BasePage';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import CheckoutPageStepTwo from './CheckoutPageStepTwo';
 
 export default class CheckoutPageStepOne extends BasePage{
-    public header: Header = new Header();
-    public footer: Footer = new Footer();
 
     constructor() {
         super('Checkout Page', 'checkout-step-one.html');
     }
 
-    private get inputFirtNameField(): Cypress.Chainable {
+    private get inputFirstNameField(): Cypress.Chainable {
         return cy.get('[data-test="firstName"]');
     }
     private get inputSecondNameField(): Cypress.Chainable {
@@ -23,11 +19,11 @@ export default class CheckoutPageStepOne extends BasePage{
     private get ContinueButton(): Cypress.Chainable {
         return cy.get('[data-test="continue"]');
     }
-    private enterFirtName(firstName: string): this {
-        this.inputFirtNameField.clear().type(firstName);
+    private enterFirstName(firstName: string): this {
+        this.inputFirstNameField.clear().type(firstName);
         return this;
     }
-    private enterSecondName(secondName: string): this {
+    private enterLastName(secondName: string): this {
         this.inputSecondNameField.clear().type(secondName);
         return this;
     }
@@ -39,9 +35,9 @@ export default class CheckoutPageStepOne extends BasePage{
         this.ContinueButton.click();
     }
 
-    public placingAnOrder(firstName:string,secondName:string,postalCode:string): CheckoutPageStepTwo {
-        this.enterFirtName(firstName)
-            .enterSecondName(secondName)
+    public fillClientInformationAndClickOnContinueButton(firstName:string, lastName:string, postalCode:string): CheckoutPageStepTwo {
+        this.enterFirstName(firstName)
+            .enterLastName(lastName)
             .enterPostalCode(postalCode)
             .clickOnContinueButton();
         return new CheckoutPageStepTwo();

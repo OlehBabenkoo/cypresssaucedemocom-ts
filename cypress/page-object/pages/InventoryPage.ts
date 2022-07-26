@@ -16,10 +16,6 @@ export default class InventoryPage extends BasePage {
         return cy.get(`${this.inventoryContainer} [class="inventory_item"]`);
     }
 
-    private get productButtonAddToCart (): Cypress.Chainable {
-        return cy.get(`${this.inventoryContainer} [data-test='add-to-cart-sauce-labs-backpack']`);
-    }
-
     private getArrayOfItemsPrice(): Cypress.Chainable {
         return this.inventoryItems.find(this.inventoryItemPriceLocator).then(($inventoryItemPrice) => {
             return Cypress._.map(Cypress.$.makeArray($inventoryItemPrice), 'innerText').map(price => price.replace('$', ''));
@@ -33,8 +29,8 @@ export default class InventoryPage extends BasePage {
         });
         return this;
     }
-    public addProductToCart(): this{
-        this.productButtonAddToCart.should('have.text', 'Add to cart').click();
+    public addFirstProductToCart(): this{
+        this.inventoryItems.eq(0).contains('button', 'Add to cart').click();
         return this;
     }
 }

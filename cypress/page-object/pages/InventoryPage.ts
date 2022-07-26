@@ -21,13 +21,16 @@ export default class InventoryPage extends BasePage {
             return Cypress._.map(Cypress.$.makeArray($inventoryItemPrice), 'innerText').map(price => price.replace('$', ''));
         });
     }
-
     public checkGoodsIsSortedByLowToHi(): this {
         this.getArrayOfItemsPrice().each((currentItemPrice, index, list) => {
             if (list.length - 1 != index) {
                 expect(Number(currentItemPrice)).lte(Number(list[index + 1]));
             }
         });
+        return this;
+    }
+    public addFirstProductToCart(): this{
+        this.inventoryItems.eq(0).contains('button', 'Add to cart').click();
         return this;
     }
 }

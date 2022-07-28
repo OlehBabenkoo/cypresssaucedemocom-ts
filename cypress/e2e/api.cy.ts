@@ -5,7 +5,7 @@ describe('API test', () => {
         ApiService.sendDataFromFixtureFileAndVerifyRequestParameters('ipinfo.json', 'GET', 'https://ipinfo.io/161.185.160.93/geo');
     });
 
-    it('', () => {
+    it('Check the similarity of the fixtur file and the JSON API', () => {
         ApiService.sendDataFromFixtureFileAndVerifyRequestParameters('agify.io.json', 'GET', 'https://api.agify.io/?name=meelad');
     });
 });

@@ -18,4 +18,20 @@ describe('Product order verification tests', () => {
             .clickOnFinishButtonAndCompleteTheOrder()
             .checkCompleteText();
     });
+    it('Checking for error messages when entering information about the customer', () => {
+        cy.logInWithoutUi(Credentials.getUserCredentials(AccountType.Standard));
+        inventoryPage
+            .visit()
+            .checkPageUrl()
+            .addFirstProductToCart()
+            .header.clickCartLink()
+            .clickForCheckout()
+            .clickOnContinueButton()
+            .checkingErrorMessage('Error: First Name is required')
+            .inputFirstName('Oleh')
+            .checkingErrorMessage('Error: Last Name is required')
+            .inputLastName('Babenko')
+            .checkingErrorMessage('Error: Postal Code is required')
+            .inputPostalCode('22000');
+    });
 });

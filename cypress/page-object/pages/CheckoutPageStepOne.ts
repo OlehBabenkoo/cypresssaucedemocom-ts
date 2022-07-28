@@ -16,11 +16,11 @@ export default class CheckoutPageStepOne extends BasePage {
     private get inputCodeField(): Cypress.Chainable {
         return cy.get('[data-test="postalCode"]');
     }
-    private get ContinueButton(): Cypress.Chainable {
+    private get continueButton(): Cypress.Chainable {
         return cy.get('[data-test="continue"]');
     }
     private get errorMessage(): Cypress.Chainable {
-        return cy.get('[class="error-message-container error"]');
+        return cy.get('[class^="error"]');
     }
     private enterFirstName(firstName: string): this {
         this.inputFirstNameField.clear().type(firstName);
@@ -35,11 +35,11 @@ export default class CheckoutPageStepOne extends BasePage {
         return this;
     }
     public clickOnContinueButton(): this {
-        this.ContinueButton.click();
+        this.continueButton.click();
         return this;
     }
-    public checkingErrorMessage(ErrorMessage: string): this {
-        this.errorMessage.should('have.text', ErrorMessage);
+    public checkingErrorMessage(errorMessage: string): this {
+        this.errorMessage.should('have.text', errorMessage);
         return this;
     }
     public inputFirstName(firstName: string): this {

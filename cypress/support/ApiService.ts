@@ -3,7 +3,9 @@ export default class ApiService {
         cy.fixture(pathToFixture).then((object) => {
             cy.request(requestMethod, requestUrl).then(
                 (resp) => {
-                    expect(resp.body).deep.equal(object);
+                   for(let key in object){
+                    expect(object[key]).deep.equal(resp.body[key]);
+                   }
                 });
         });
     }

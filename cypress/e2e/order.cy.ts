@@ -34,4 +34,11 @@ describe('Product order verification tests', () => {
             .checkingErrorMessage('Error: Postal Code is required')
             .inputPostalCode('22000');
     });
+    it.only('Сheck that the product is added and removed from the basket', () => {
+        cy.logInWithoutUi(Credentials.getUserCredentials(AccountType.Standard));
+        inventoryPage
+            .visit()
+            .checkPageUrl()
+            .clickRandomProduct();
+    });
 });

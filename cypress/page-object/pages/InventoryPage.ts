@@ -1,12 +1,14 @@
 import Header from '../components/Header';
 import BasePage from '../base/BasePage';
 import Footer from '../components/Footer';
+import InventoryItemPage from './InventoryItemPage';
 
 export default class InventoryPage extends BasePage {
     public header: Header = new Header();
     public footer: Footer = new Footer();
     private inventoryContainer: string = '#inventory_container';
     private inventoryItemPriceLocator: string = '.inventory_item_price';
+    private inventoryTitleListLocator: string = '[id$="title_link"]';
 
     constructor() {
         super('Inventory Page', 'inventory.html');
@@ -15,7 +17,6 @@ export default class InventoryPage extends BasePage {
     private get inventoryItems(): Cypress.Chainable {
         return cy.get(`${this.inventoryContainer} [class="inventory_item"]`);
     }
-
     private getArrayOfItemsPrice(): Cypress.Chainable {
         return this.inventoryItems.find(this.inventoryItemPriceLocator).then(($inventoryItemPrice) => {
             return Cypress._.map(Cypress.$.makeArray($inventoryItemPrice), 'innerText').map(price => price.replace('$', ''));
@@ -29,8 +30,17 @@ export default class InventoryPage extends BasePage {
         });
         return this;
     }
-    public addFirstProductToCart(): this{
+    public addFirstProductToCart(): this {
         this.inventoryItems.eq(0).contains('button', 'Add to cart').click();
         return this;
+    }
+    public clickOnRandomProduct(): InventoryItemPage {
+        this.inventoryItems.then(inventoryItems => {
+            cy.wrap(inventoryItems)
+            .eq(Cypress._.random(inventoryItems.length - 1))
+            .find(this.inventoryTitleListLocator)
+            .click();
+        });
+        return new InventoryItemPage();
     }
 }

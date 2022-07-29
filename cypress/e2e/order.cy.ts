@@ -1,8 +1,10 @@
 import { AccountType } from '../support/AccountType';
 import Credentials from '../support/Credentials';
 import InventoryPage from '../page-object/pages/InventoryPage';
+import InventoryItemPage from '../page-object/pages/InventoryItemPage';
 
 const inventoryPage = new InventoryPage();
+const inventoryItemPage = new InventoryItemPage();
 
 describe('Product order verification tests', () => {
     it('Product order (positive flow)', () => {
@@ -33,5 +35,19 @@ describe('Product order verification tests', () => {
             .inputLastName('Babenko')
             .checkingErrorMessage('Error: Postal Code is required')
             .inputPostalCode('22000');
+    });
+    it('Сheck that the product is added and removed from the basket', () => {
+        cy.logInWithoutUi(Credentials.getUserCredentials(AccountType.Standard));
+        inventoryPage
+            .visit()
+            .checkPageUrl()
+            .clickOnRandomProduct()
+            .checkProductFields()
+            .addProductToCart()
+            .header.checkThatCardHasProducts();
+            inventoryItemPage.removeProductFromCard()
+            .header.checkThatCardNotHaveProducts()
+            .clickOnBackToProductButton()
+            .checkPageUrl();
     });
 });

@@ -1,8 +1,11 @@
 import { AccountType } from '../support/AccountType';
 import Credentials from '../support/Credentials';
 import InventoryPage from '../page-object/pages/InventoryPage';
+import InventoryItemPage from '../page-object/pages/InventoryItemPage';
+
 
 const inventoryPage = new InventoryPage();
+const inventoryItemPage = new InventoryItemPage();
 
 describe('Product order verification tests', () => {
     it('Product order (positive flow)', () => {
@@ -39,6 +42,11 @@ describe('Product order verification tests', () => {
         inventoryPage
             .visit()
             .checkPageUrl()
-            .clickRandomProduct();
+            .clickOnRandomProduct()
+            .checkProductField()
+            .addProductToCart()
+            .header.checkThatCardHasProducts();
+            inventoryItemPage.removeProductFromCard()
+            .header.checkThatCardNotHaveProductsAndBackInventoryPage();
     });
 });

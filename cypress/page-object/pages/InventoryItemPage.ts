@@ -15,7 +15,7 @@ export default class InventoryItemPage extends BasePage {
     private get inventoryItemTitle(): Cypress.Chainable {
         return cy.get(`${this.inventoryContainer} [class="inventory_details_name large_size"]`);
     }
-    private get inventoryItemDesciption(): Cypress.Chainable {
+    private get inventoryItemDescription(): Cypress.Chainable {
         return cy.get(`${this.inventoryContainer} [class="inventory_details_desc large_size"]`);
     }
     private get inventoryItemPrice(): Cypress.Chainable {
@@ -27,14 +27,14 @@ export default class InventoryItemPage extends BasePage {
         return this;
     }
     private checkItemDescription(): this {
-        this.inventoryItemDesciption.should('be.visible');
+        this.inventoryItemDescription.should('be.visible');
         return this;
     }
     private checkItemPrice(): this {
         this.inventoryItemPrice.should('be.visible');
         return this;
     }
-    public checkProductField(): this {
+    public checkProductFields(): this {
         this.checkItemTitle()
             .checkItemDescription()
             .checkItemPrice();

@@ -8,7 +8,7 @@ export default class InventoryPage extends BasePage {
     public footer: Footer = new Footer();
     private inventoryContainer: string = '#inventory_container';
     private inventoryItemPriceLocator: string = '.inventory_item_price';
-    private inventotyTitleListLocator: string = '[id$="title_link"]';
+    private inventoryTitleListLocator: string = '[id$="title_link"]';
 
     constructor() {
         super('Inventory Page', 'inventory.html');
@@ -38,7 +38,7 @@ export default class InventoryPage extends BasePage {
         this.inventoryItems.then(inventoryItems => {
             cy.wrap(inventoryItems)
             .eq(Cypress._.random(inventoryItems.length - 1))
-            .find(this.inventotyTitleListLocator)
+            .find(this.inventoryTitleListLocator)
             .click();
         });
         return new InventoryItemPage();

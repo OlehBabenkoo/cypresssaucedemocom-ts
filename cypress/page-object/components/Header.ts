@@ -18,6 +18,9 @@ export default class Header {
   private get productAddedInCart(): Cypress.Chainable {
     return cy.get(`${this.headerContainer} [class="shopping_cart_badge"]`);
   }
+  private get backToProducts(): Cypress.Chainable {
+    return cy.get(`${this.headerContainer} [data-test="back-to-products"]`);
+  }
 
   public sortedBy(sortedTypes: SortTypes): InventoryPage {
     this.sortDropdown.select(sortedTypes);
@@ -39,9 +42,12 @@ export default class Header {
     this.productAddedInCart.should('be.visible');
     return this;
   }
-  public checkThatCardNotHaveProductsAndBackInventoryPage(): this {
-    this.productAddedInCart.should('not.exist')
-    .go('back');
+  public checkThatCardNotHaveProducts(): this {
+    this.productAddedInCart.should('not.exist');
     return this;
+  }
+  public clickOnBackToProductButton():InventoryPage{
+    this.backToProducts.click();
+    return new InventoryPage();
   }
 }

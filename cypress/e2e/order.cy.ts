@@ -3,7 +3,6 @@ import Credentials from '../support/Credentials';
 import InventoryPage from '../page-object/pages/InventoryPage';
 import InventoryItemPage from '../page-object/pages/InventoryItemPage';
 
-
 const inventoryPage = new InventoryPage();
 const inventoryItemPage = new InventoryItemPage();
 
@@ -43,10 +42,12 @@ describe('Product order verification tests', () => {
             .visit()
             .checkPageUrl()
             .clickOnRandomProduct()
-            .checkProductField()
+            .checkProductFields()
             .addProductToCart()
             .header.checkThatCardHasProducts();
             inventoryItemPage.removeProductFromCard()
-            .header.checkThatCardNotHaveProductsAndBackInventoryPage();
+            .header.checkThatCardNotHaveProducts()
+            .clickOnBackToProductButton()
+            .checkPageUrl();
     });
 });

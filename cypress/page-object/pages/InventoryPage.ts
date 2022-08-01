@@ -56,4 +56,14 @@ export default class InventoryPage extends BasePage {
         });
         return new InventoryItemPage();
     }
+    public clickOnRandomProductButton(): this{
+        this.inventoryItems.then(inventoryItems => {
+            cy.wrap(inventoryItems)
+            .eq(Math.floor(Math.random() * (inventoryItems.length + 1)))
+            .contains('button', 'Add to cart')
+            .click();
+
+        });
+        return this;
+    }
 }

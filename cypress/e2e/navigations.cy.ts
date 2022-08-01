@@ -50,4 +50,10 @@ describe('Navigations test', () => {
             .checkPageUrl()
             .footer.checkText('© 2022 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy');
     });
+    it('Checking that 3 products are added after clicking',()=>{
+        cy.logInWithoutUi(Credentials.getUserCredentials(AccountType.Standard));
+        inventoryPage
+            .visit()
+            .choseRandomProductThatHasAddToCardButton(3);
+    });
 });

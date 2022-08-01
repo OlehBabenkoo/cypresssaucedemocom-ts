@@ -50,4 +50,11 @@ describe('Product order verification tests', () => {
             .clickOnBackToProductButton()
             .checkPageUrl();
     });
+    it('Check that all products have a title, description, price and a button to add to the card', () => {
+        cy.logInWithoutUi(Credentials.getUserCredentials(AccountType.Standard));
+        inventoryPage
+            .visit()
+            .checkPageUrl()
+            .checkProductsField();
+    });
 });

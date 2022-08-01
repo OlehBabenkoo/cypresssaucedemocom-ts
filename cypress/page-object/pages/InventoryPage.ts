@@ -25,7 +25,26 @@ export default class InventoryPage extends BasePage {
             return Cypress._.map(Cypress.$.makeArray($inventoryItemPrice), 'innerText').map(price => price.replace('$', ''));
         });
     }
-
+    private choseRandomProductThatHasAddToCardButtonAndClickOn(countOfRandomProduct: number): void {
+        this.inventoryItems.then(inventoryItems => {
+            if (countOfRandomProduct > inventoryItems.length) throw Error(`Count \'${countOfRandomProduct}\'of random product is bigger then products on the page`);
+            cy.wrap(inventoryItems)
+                .eq(Cypress._.random(inventoryItems.length - 1)).then(inventoryItem => {
+                    if (inventoryItem.find(this.inventoryItemButtonLocator).text() === 'Add to cart') {
+                        cy.wrap(inventoryItem.find(this.inventoryItemButtonLocator)).click();
+                    }
+                    else {
+                        this.choseRandomProductThatHasAddToCardButtonAndClickOn(countOfRandomProduct);
+                    }
+                });
+        });
+    }
+    public choseRandomProductThatHasAddToCardButton(countOfRandomProduct: number): this {
+        for (let i = 0; i < countOfRandomProduct; i++) {
+            this.choseRandomProductThatHasAddToCardButtonAndClickOn(countOfRandomProduct);
+        }
+        return this;
+    }
     public checkProductsField(): this {
         this.inventoryItems.each(inventoryItem => {
             cy.wrap(inventoryItem).find(this.inventoryItemTitleLocator).should('be.visible');
@@ -56,14 +75,5 @@ export default class InventoryPage extends BasePage {
         });
         return new InventoryItemPage();
     }
-    public clickOnRandomProductButton(): this{
-        this.inventoryItems.then(inventoryItems => {
-            cy.wrap(inventoryItems)
-            .eq(Math.floor(Math.random() * (inventoryItems.length + 1)))
-            .contains('button', 'Add to cart')
-            .click();
 
-        });
-        return this;
-    }
 }

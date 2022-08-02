@@ -1,13 +1,19 @@
 import InventoryPage from '../pages/InventoryPage';
 import { SortTypes } from '../../support/SortTypes';
 import CartPage from '../pages/CartPage';
+import LoginPage from '../pages/LoginPage';
 
 export default class Header {
   private headerContainer: string = '#header_container';
 
   private get sortDropdown(): Cypress.Chainable {
-    return cy.get(`${this.headerContainer} [data-test='product_sort_container']`
-    );
+    return cy.get(`${this.headerContainer} [data-test="product_sort_container"]`);
+  }
+  private get burgerButton(): Cypress.Chainable {
+    return cy.get(`${this.headerContainer} [class="bm-burger-button"]`);
+  }
+  private get burgerMenuItemList(): Cypress.Chainable {
+    return cy.get(`${this.headerContainer} [class="bm-menu"]`);
   }
   private get headerTitle(): Cypress.Chainable {
     return cy.get(`${this.headerContainer} [class="title"]`);
@@ -20,6 +26,15 @@ export default class Header {
   }
   private get backToProducts(): Cypress.Chainable {
     return cy.get(`${this.headerContainer} [data-test="back-to-products"]`);
+  }
+
+  public clickOnBurgerMenuButton(): this {
+    this.burgerButton.click();
+    return this;
+  }
+  public clickOnLogOutInBurgerMenu(): LoginPage {
+    this.burgerMenuItemList.contains('Logout').click();
+    return new LoginPage();
   }
 
   public sortedBy(sortedTypes: SortTypes): InventoryPage {
@@ -38,6 +53,10 @@ export default class Header {
     this.headerTitle.should('have.text', 'Your Cart');
     return this;
   }
+  public checkThatCardHasRequiredAmountOfProducts(amountItems:number): this {
+    this.productAddedInCart.should('be.visible').contains(amountItems);
+    return this;
+  }
   public checkThatCardHasProducts(): this {
     this.productAddedInCart.should('be.visible');
     return this;
@@ -46,7 +65,7 @@ export default class Header {
     this.productAddedInCart.should('not.exist');
     return this;
   }
-  public clickOnBackToProductButton():InventoryPage{
+  public clickOnBackToProductButton(): InventoryPage {
     this.backToProducts.click();
     return new InventoryPage();
   }

@@ -54,6 +54,7 @@ describe('Navigations test', () => {
         cy.logInWithoutUi(Credentials.getUserCredentials(AccountType.Standard));
         inventoryPage
             .visit()
-            .choseRandomProductThatHasAddToCardButton(3);
+            .choseRandomProductThatHasAddToCardButton(3)
+            .header.checkThatCardHasRequiredAmountOfProducts(3);
     });
 });

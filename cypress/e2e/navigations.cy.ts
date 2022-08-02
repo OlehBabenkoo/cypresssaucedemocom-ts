@@ -43,7 +43,7 @@ describe('Navigations test', () => {
             .footer.checkSocialLinks();
     });
 
-    it('Check text in foooter',()=>{
+    it('Check text in footer',()=>{
         cy.logInWithoutUi(Credentials.getUserCredentials(AccountType.Standard));
         inventoryPage
             .visit()

@@ -28,11 +28,11 @@ export default class Header {
     return cy.get(`${this.headerContainer} [data-test="back-to-products"]`);
   }
 
-  public clickOnBurgerMenuButton(): this {
+  public clickOnSlideMenu(): this {
     this.burgerButton.click();
     return this;
   }
-  public clickOnLogOutInBurgerMenu(): LoginPage {
+  public clickOnLogOutInSlideMenu(): LoginPage {
     this.burgerMenuItemList.contains('Logout').click();
     return new LoginPage();
   }
@@ -54,7 +54,7 @@ export default class Header {
     return this;
   }
   public checkThatCardHasRequiredAmountOfProducts(amountItems:number): this {
-    this.productAddedInCart.should('be.visible').contains(amountItems);
+    this.productAddedInCart.should('have.text',amountItems).and('be.visible');
     return this;
   }
   public checkThatCardHasProducts(): this {

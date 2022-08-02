@@ -41,9 +41,9 @@ describe('Login and Logout test', () => {
         loginPage
             .visit()
             .checkPageUrl()
-            .logInWithCredentials(Credentials.getUserCredentials(AccountType.Standard));
-            inventoryPage.header.clickOnBurgerMenuButton()
-            .clickOnLogOutInBurgerMenu()
+            .logInWithCredentials(Credentials.getUserCredentials(AccountType.Standard))
+            .header.clickOnSlideMenu()
+            .clickOnLogOutInSlideMenu()
             .checkPageUrl()
             .checkThanFieldEmpty();
     });

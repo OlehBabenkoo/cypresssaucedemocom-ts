@@ -37,4 +37,14 @@ describe('Login and Logout test', () => {
           .logInWithCredentials(Credentials.getUserCredentials(AccountType.LocKed));
         loginPage.checkErrorMessage('Epic sadface: Sorry, this user has been locked out.');
     });
+    it('Login with \'standard\' user and log out of the account to check that the fields are empty', () => {
+        loginPage
+            .visit()
+            .checkPageUrl()
+            .logInWithCredentials(Credentials.getUserCredentials(AccountType.Standard))
+            .header.clickOnSlideMenu()
+            .clickOnLogOutInSlideMenu()
+            .checkPageUrl()
+            .checkThanFieldEmpty();
+    });
 });

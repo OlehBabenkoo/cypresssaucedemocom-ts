@@ -49,4 +49,9 @@ export default class LoginPage extends BasePage {
             .clickOnLogInButton();
         return new InventoryPage();
     }
+    public checkThanFieldEmpty(): this {
+        this.inputEmailField.should('have.value', '');
+        this.inputPasswordField.should('have.value', '');
+        return this;
+    }
 }

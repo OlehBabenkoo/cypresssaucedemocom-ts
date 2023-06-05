@@ -22,6 +22,10 @@ export default class InventoryItemPage extends BasePage {
         return cy.get(`${this.inventoryContainer} [class="inventory_details_price"`);
     }
 
+    private get inventoryBtn(): Cypress.Chainable {
+        return cy.get(`${this.inventoryContainer} [class="btn_primary btn_inventory"`);
+    }
+
     private checkItemTitle(): this {
         this.inventoryItemTitle.should('be.visible');
         return this;
@@ -42,7 +46,7 @@ export default class InventoryItemPage extends BasePage {
 
     }
     public addProductToCart(): this {
-        this.inventoryItem.contains('button', 'ADD TO CART').click();
+        this.inventoryBtn.contains('button', 'ADD TO CART').click();
         return this;
     }
     public removeProductFromCard(): this {

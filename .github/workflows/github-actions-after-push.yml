@@ -2,7 +2,7 @@ name: GitHub Actions After Push Into Develop Branch
 on:
   push:
     branches:
-      - develop-ts
+      - master
 jobs:
  cypress-run:
     runs-on: ubuntu-latest
@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          ref: develop-ts
+          ref: master
       - name: Install node
         uses: actions/setup-node@v2
         with:

@@ -13,7 +13,7 @@ export default defineConfig({
         video: false,
         viewportHeight: 1792,
         viewportWidth: 828,
-        baseUrl: 'https://www.saucedemo.com/',
+        baseUrl: 'https://www.saucedemo.com/v1/',
         chromeWebSecurity: false,
         env: {
             accounts: {

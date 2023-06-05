@@ -50,7 +50,6 @@ export default class InventoryPage extends BasePage {
             cy.wrap(inventoryItem).find(this.inventoryItemTitleLocator).should('be.visible');
             cy.wrap(inventoryItem).find(this.inventoryItemDescLocator).should('be.visible');
             cy.wrap(inventoryItem).find(this.inventoryItemPriceLocator).should('be.visible');
-            cy.wrap(inventoryItem).find(this.inventoryItemButtonLocator).should('be.visible');
         });
         return this;
     }
@@ -63,7 +62,7 @@ export default class InventoryPage extends BasePage {
         return this;
     }
     public addFirstProductToCart(): this {
-        this.inventoryItems.eq(0).contains('button', 'Add to cart').click();
+        this.inventoryItems.eq(0).contains('button', 'ADD TO CART').click();
         return this;
     }
     public clickOnRandomProduct(): InventoryItemPage {

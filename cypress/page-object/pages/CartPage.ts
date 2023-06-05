@@ -11,7 +11,7 @@ export default class CartPage extends BasePage {
     }
 
     private get cartPageCheckoutButton(): Cypress.Chainable {
-        return cy.get(`${this.cartPageLocator} [data-test="checkout"]`);
+        return cy.get(`${this.cartPageLocator} [class="btn_action checkout_button"]`);
     }
     private get cartList(): Cypress.Chainable {
         return cy.get(`${this.cartPageLocator} [class="cart_list"]`);
@@ -24,7 +24,7 @@ export default class CartPage extends BasePage {
         return this;
     }
     public checkButton(buttonTitle: string): this {
-        cy.contains('button', buttonTitle).should('have.text', buttonTitle);
+        cy.contains('a', buttonTitle).should('have.text', buttonTitle);
         return this;
     }
     public clickForCheckout(): CheckoutPageStepOne {

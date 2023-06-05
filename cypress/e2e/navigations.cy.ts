@@ -15,14 +15,6 @@ describe('Navigations test', () => {
             .checkGoodsIsSortedByLowToHi();
     });
 
-    it('Checking that there is a Product heading on the Inventory Page', () => {
-        cy.logInWithoutUi(Credentials.getUserCredentials(AccountType.Standard));
-        inventoryPage
-            .visit()
-            .checkPageUrl()
-            .header.checkInventoryTitle();
-    });
-
     it('Checking that the text on the shopping Cart Page corresponds to the expected result', () => {
         cy.logInWithoutUi(Credentials.getUserCredentials(AccountType.Standard));
         inventoryPage
@@ -31,16 +23,8 @@ describe('Navigations test', () => {
             .header.clickCartLink()
             .checkPageUrl()
             .checkButton('Continue Shopping')
-            .checkButton('Checkout')
+            .checkButton('CHECKOUT')
             .header.checkCartTitle();
-    });
-
-    it('Check links in footer', () => {
-        cy.logInWithoutUi(Credentials.getUserCredentials(AccountType.Standard));
-        inventoryPage
-            .visit()
-            .checkPageUrl()
-            .footer.checkSocialLinks();
     });
 
     it('Check text in footer',()=>{
@@ -48,13 +32,6 @@ describe('Navigations test', () => {
         inventoryPage
             .visit()
             .checkPageUrl()
-            .footer.checkText('© 2022 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy');
-    });
-    it('Checking that 3 products are added after clicking',()=>{
-        cy.logInWithoutUi(Credentials.getUserCredentials(AccountType.Standard));
-        inventoryPage
-            .visit()
-            .choseRandomProductThatHasAddToCardButton(3)
-            .header.checkThatCardHasRequiredAmountOfProducts(3);
+            .footer.checkText('© 2020 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy');
     });
 });

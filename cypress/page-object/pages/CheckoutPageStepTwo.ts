@@ -8,7 +8,7 @@ export default class CheckoutPageStepTwo extends BasePage {
     }
 
     private get finishButton(): Cypress.Chainable {
-        return cy.get('[data-test="finish"]');
+        return cy.get('[class="btn_action cart_button"]');
     }
 
     public clickOnFinishButtonAndCompleteTheOrder(): CheckoutComplete {

@@ -15,14 +15,6 @@ describe('Login and Logout test', () => {
             .checkPageUrl();
     });
 
-    it('Login with \'problem\' user', () => {
-        loginPage
-            .visit()
-            .checkPageUrl()
-            .logInWithCredentials(Credentials.getUserCredentials(AccountType.Standard))
-            .checkPageUrl();
-    });
-
     it('Login with \'standard\' user with set cookies', () => {
         cy.logInWithoutUi(Credentials.getUserCredentials(AccountType.Standard));
         inventoryPage

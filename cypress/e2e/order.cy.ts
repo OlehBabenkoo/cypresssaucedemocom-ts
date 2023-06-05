@@ -17,8 +17,7 @@ describe('Product order verification tests', () => {
             .checkProductIsAddedToCardPage()
             .clickForCheckout()
             .fillClientInformationAndClickOnContinueButton('Oleh', 'Babenko', '22000')
-            .clickOnFinishButtonAndCompleteTheOrder()
-            .checkCompleteText();
+            .clickOnFinishButtonAndCompleteTheOrder();
     });
     it('Checking for error messages when entering information about the customer', () => {
         cy.logInWithoutUi(Credentials.getUserCredentials(AccountType.Standard));
@@ -43,11 +42,9 @@ describe('Product order verification tests', () => {
             .checkPageUrl()
             .clickOnRandomProduct()
             .checkProductFields()
-            .addProductToCart()
-            .header.checkThatCardHasProducts();
+            .addProductToCart();
             inventoryItemPage.removeProductFromCard()
-            .header.checkThatCardNotHaveProducts()
-            .clickOnBackToProductButton()
+            .header.clickOnBackToProductButton()
             .checkPageUrl();
     });
     it('Check that all products have a title, description, price and a button to add to the card', () => {

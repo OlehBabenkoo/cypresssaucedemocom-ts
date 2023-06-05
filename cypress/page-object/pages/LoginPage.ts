@@ -4,7 +4,7 @@ import InventoryPage from './InventoryPage';
 export default class LoginPage extends BasePage {
 
     constructor() {
-        super('LogIn Page');
+        super('LogIn Page','index.html');
     }
 
     private get inputEmailField(): Cypress.Chainable {
@@ -16,11 +16,11 @@ export default class LoginPage extends BasePage {
     }
 
     private get logInButton(): Cypress.Chainable {
-        return cy.get('[data-test="login-button"]');
+        return cy.get('#login-button');
     }
 
     private get errorText():Cypress.Chainable{
-        return cy.get('.error-message-container');
+        return cy.get('[data-test="error"]');
     }
 
     private enterEmail(userName: string): this {

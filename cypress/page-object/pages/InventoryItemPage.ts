@@ -10,13 +10,13 @@ export default class InventoryItemPage extends BasePage {
     }
 
     private get inventoryItem(): Cypress.Chainable {
-        return cy.get(`${this.inventoryContainer} [class="inventory_details"]`);
+        return cy.get(`${this.inventoryContainer} [class="inventory_details_container"]`);
     }
     private get inventoryItemTitle(): Cypress.Chainable {
-        return cy.get(`${this.inventoryContainer} [class="inventory_details_name large_size"]`);
+        return cy.get(`${this.inventoryContainer} [class="inventory_details_name"]`);
     }
     private get inventoryItemDescription(): Cypress.Chainable {
-        return cy.get(`${this.inventoryContainer} [class="inventory_details_desc large_size"]`);
+        return cy.get(`${this.inventoryContainer} [class="inventory_details_desc"]`);
     }
     private get inventoryItemPrice(): Cypress.Chainable {
         return cy.get(`${this.inventoryContainer} [class="inventory_details_price"`);
@@ -42,11 +42,11 @@ export default class InventoryItemPage extends BasePage {
 
     }
     public addProductToCart(): this {
-        this.inventoryItem.contains('button', 'Add to cart').click();
+        this.inventoryItem.contains('button', 'ADD TO CART').click();
         return this;
     }
     public removeProductFromCard(): this {
-        this.inventoryItem.contains('button', 'Remove').click();
+        this.inventoryItem.contains('button', 'REMOVE').click();
         return this;
     }
 }

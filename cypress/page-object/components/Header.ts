@@ -4,10 +4,10 @@ import CartPage from '../pages/CartPage';
 import LoginPage from '../pages/LoginPage';
 
 export default class Header {
-  private headerContainer: string = '#header_container';
+  private headerContainer: string = '#page_wrapper';
 
   private get sortDropdown(): Cypress.Chainable {
-    return cy.get(`${this.headerContainer} [data-test="product_sort_container"]`);
+    return cy.get(`${this.headerContainer} [class="product_sort_container"]`);
   }
   private get burgerButton(): Cypress.Chainable {
     return cy.get(`${this.headerContainer} [class="bm-burger-button"]`);
@@ -18,14 +18,19 @@ export default class Header {
   private get headerTitle(): Cypress.Chainable {
     return cy.get(`${this.headerContainer} [class="title"]`);
   }
+
+  private get cartHeaderTitle(): Cypress.Chainable {
+    return cy.get(`${this.headerContainer} [class="subheader"]`);
+  }
+
   private get cartImage(): Cypress.Chainable {
-    return cy.get(`${this.headerContainer} [class="shopping_cart_link"]`);
+    return cy.get(`${this.headerContainer} [class="shopping_cart_container"]`);
   }
   private get productAddedInCart(): Cypress.Chainable {
-    return cy.get(`${this.headerContainer} [class="shopping_cart_badge"]`);
+    return cy.get(`${this.headerContainer} [class$="_cart_badge"]`);
   }
   private get backToProducts(): Cypress.Chainable {
-    return cy.get(`${this.headerContainer} [data-test="back-to-products"]`);
+    return cy.get(`${this.headerContainer} [class="inventory_details_back_button"]`);
   }
 
   public clickOnSlideMenu(): this {
@@ -50,7 +55,7 @@ export default class Header {
     return new CartPage();
   }
   public checkCartTitle(): this {
-    this.headerTitle.should('have.text', 'Your Cart');
+    this.cartHeaderTitle.should('have.text', 'Your Cart');
     return this;
   }
   public checkThatCardHasRequiredAmountOfProducts(amountItems:number): this {

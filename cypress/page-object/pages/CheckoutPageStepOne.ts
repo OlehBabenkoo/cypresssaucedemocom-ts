@@ -17,10 +17,10 @@ export default class CheckoutPageStepOne extends BasePage {
         return cy.get('[data-test="postalCode"]');
     }
     private get continueButton(): Cypress.Chainable {
-        return cy.get('[data-test="continue"]');
+        return cy.get('[class="btn_primary cart_button"]');
     }
     private get errorMessage(): Cypress.Chainable {
-        return cy.get('[class^="error"]');
+        return cy.get('[data-test^="error"]');
     }
     private enterFirstName(firstName: string): this {
         this.inputFirstNameField.clear().type(firstName);
